@@ -9,17 +9,29 @@ got('localhost:8080/about', {
   }})
   .then(response => {
     let $ = cheerio.load(response.body);
-    /*
-    $('table.list > tr').each((index, element) => {
-
-    });
-    */
     let address = $('address');
+
     if(address.length) {
+      console.log("Company Info:");
       console.log(address.text());
     }
 
-    //console.log($('address').text())
+    $('.team tbody tr').each((index, element) => {
+      const $element = $(element);
+      const employee = {
+        index: index,
+        name: $element.find('td.name').text(),
+        title: $element.find('td.title').text(),
+        email: $element.find('td.email a').text(),
+        phone: $element.find('td.phone').text()
+      };
+
+      console.log(`Employee: ${employee.index}`);
+      console.log(`\tName: ${employee.name}`);
+      console.log(`\tTitle: ${employee.title}`);
+      console.log(`\tEmail: ${employee.email}`);
+      console.log(`\tPhone: ${employee.phone}`);
+    });
   })
   .catch(error => {
     console.log(error)
