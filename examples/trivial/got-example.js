@@ -2,7 +2,7 @@
 
 const got = require('got');
 
-got(process.argv[2], {
+got('localhost:8080', {
   headers: {
     'User-Agent': 'nodejstl-bot',
   }})
