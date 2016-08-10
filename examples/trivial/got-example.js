@@ -2,7 +2,10 @@
 
 const got = require('got');
 
-got(process.argv[2])
+got(process.argv[2], {
+  headers: {
+    'User-Agent': 'nodejstl-bot',
+  }})
   .then(response => {
     let body = response.body;
     let matcher = /sale/i;
