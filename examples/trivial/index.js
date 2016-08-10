@@ -1,5 +1,6 @@
 'use strict';
 
+//const buffer = require('buffer');
 const http = require('http');
 
 let options = {
@@ -13,14 +14,14 @@ let options = {
 };
 
 let req = http.request(options, res => {
-  console.log(`STATUS: ${res.statusCode}`);
-  let body = '';
+  let bodyData = [];
 
   res.on('data', data => {
-    body += data.toString();
+    bodyData.push(data);
   });
 
   res.on('end', () => {
+    let body = Buffer.concat(bodyData).toString()
     let matcher = /sale/i;
     let result = matcher.exec(body);
     if (result) {
