@@ -27,7 +27,7 @@ Notes for the presentation follows.
 
 ### A Quick Background on Scraping
 * Scraping is the act of programmatically consuming a User Interface and extracting unstructured information for the purpose of creating structure data.
-* Build a read-only API on top of a User Interface
+* Build a read-only API on top of a User Interface as opposed to a database, existing API, etc.
 * Before web scraping there was screen scraping.
     * Intercept terminal communication and extract relevant data.
     * Listen for window messages in a GUI application and extract data from fields or controls.
@@ -37,8 +37,18 @@ Notes for the presentation follows.
     * Financial documents, such as reports, can contain data that is more valuable if it can be stored and manipulated independent from the document.
 
 ### Web Scraping
+* Process the responses from HTTP requests (HTML, JSON, images, etc) for the purposes of processing the data in some way instead of just displaying to users.
+* Possibly involves handling the responses in a fashion similar to a browser (or, exactly like a browser)
 * At a minimum requires parsing data out of raw web server responses.
 * Can be up to programmatically driving a web browser in order to have a dynamic DOM and JavaScript support.
+
+### Common Examples
+* If a website doesn't have a publicly available API, scraping may be an answer.
+* Build applications that require 3rd party web data
+    * Alerts - BYO Google Alerts, Price changes
+    * Data Aggregation - Padmapper, crime stats
+    * Financial Data - Yodlee
+    * Niche Search Engine
 
 ### Pros of Web Scraping
 * In the best case scenarios web scraping is significantly more straightforward than traditional screen scraping.
@@ -52,9 +62,11 @@ Notes for the presentation follows.
 
 ### Potential Issues
 * Still not foolproof and it comes with its own set of challenges
+    * If you have the option to just use an API - DO IT
 * UI changes can render existing web scraping scripts useless.
     * Ideally, UI changes would be done via CSS only and the HTML structure wouldn't change, but that rarely happens.
     * [Structured schemas](https://schema.org/) exist but adoption is infrequent and inconsistent.
+    * The data may simply no longer be available.
 * Client heavy web applications will require a full DOM and JavaScript interpreter.
 * A site's terms of service and robots.txt may prevent you from scraping a site.
 * Rate limiting, session tracking, IP bans, etc can all disrupt your ability to access a web site in a timely manner.
