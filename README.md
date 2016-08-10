@@ -37,7 +37,7 @@ Notes for the presentation follows.
     * Financial documents, such as reports, can contain data that is more valuable if it can be stored and manipulated independent from the document.
 
 ### Web Scraping
-* Process the responses from HTTP requests (HTML, JSON, images, etc) for the purposes of processing the data in some way instead of just displaying to users.
+* Process the responses from HTTP requests for the purposes of processing the data in some way instead of just displaying to users.
 * Possibly involves handling the responses in a fashion similar to a browser (or, exactly like a browser)
 * At a minimum requires parsing data out of raw web server responses.
 * Can be up to programmatically driving a web browser in order to have a dynamic DOM and JavaScript support.
@@ -46,9 +46,10 @@ Notes for the presentation follows.
 * If a website doesn't have a publicly available API, scraping may be an answer.
 * Build applications that require 3rd party web data
     * Alerts - BYO Google Alerts, Price changes
-    * Data Aggregation - Padmapper, crime stats
-    * Financial Data - Yodlee
-    * Niche Search Engine
+    * Data aggregation - Padmapper, crime stats
+    * Financial data - Yodlee
+    * Niche search engine
+    * Display a page in another format - Pocket, Instapaper, etc
 
 ### Pros of Web Scraping
 * In the best case scenarios web scraping is significantly more straightforward than traditional screen scraping.
@@ -71,8 +72,22 @@ Notes for the presentation follows.
 * A site's terms of service and robots.txt may prevent you from scraping a site.
 * Rate limiting, session tracking, IP bans, etc can all disrupt your ability to access a web site in a timely manner.
 
-### Trivial Examples
+### Trivial Example
+* Simplest use case is checking for the presence of text in the response body.
+* You don't need anything other that the standard node `http` library.
+* Easy to implement and can be used for alerts or the foundation for more complicated processing.
+* It's also easy to outgrow this. You'll find yourself spending more and more time implementing logic around the request, response, and body processing. Still - start easy!
+* Consider helper libs such as [`got`](https://github.com/sindresorhus/got)
 
-### Lets add a DOM
+### Build a DOM
+* Using a regex is fine if you know exactly what you're looking for.
+* What if you don't know the value of what you're looking for? Do you want to try to parse HTML etc with a regex? Probably not!
+* [`cheerio`](https://github.com/cheeriojs/cheerio) provides a DOM, selectors, and jQuery style API for manipulating the dom.
+* Test in browser with jQuery or just test your selector with `document.querySelectorAll`
+* Minor gotcha - the DOM reflects the actual HTML and won't automatically insert elements such as tbody.
+
+### Querying the DOM
+* jQuery style API
+* find, forEach
 
 ### Full Browser Automation
