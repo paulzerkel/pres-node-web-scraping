@@ -3,6 +3,8 @@
 const Nightmare = require('nightmare');
 const nightmare = Nightmare({ show: true });
 
+nightmare.useragent('nodejstl-bot');
+
 nightmare.goto('http://localhost:8080/products')
   .wait('.products tr')
   .screenshot('./site.png')
@@ -12,8 +14,6 @@ nightmare.goto('http://localhost:8080/products')
     for (var i = 0; i < rows.length; i++) {
       var item = rows[i];
       var tds = item.querySelectorAll('td');
-      // var price = tds[2].innerText.subString(1);
-      // var weight = tds[3].innerText.subString(0, tds[3].innerText.length - 4);
       elements.push({
         name: tds[0].innerText,
         description: tds[1].innerText,
