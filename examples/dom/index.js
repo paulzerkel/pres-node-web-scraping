@@ -9,6 +9,7 @@ got('localhost:8080/about', {
   }})
   .then(response => {
     let $ = cheerio.load(response.body);
+    // select by element type
     let address = $('address');
 
     if(address.length) {
@@ -16,6 +17,11 @@ got('localhost:8080/about', {
       console.log(address.text());
     }
 
+    // selecting by itemprop
+    let streetAddress = $('[itemprop="name"]');
+    console.log(`Street: ${streetAddress.text()}`);
+
+    // a more complex selector and loop
     $('.team tbody tr').each((index, element) => {
       const $element = $(element);
       const employee = {
