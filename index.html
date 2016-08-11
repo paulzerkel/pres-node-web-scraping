@@ -24,7 +24,7 @@
 						<img class="no-border" src="images/mi-logo.png">
 					</div>
 					<div class="logo-block">
-						Consultant @
+						Consulting @
 						<img class="no-border" src="images/sl-logo.png">
 					</div>
 				</section>
@@ -59,7 +59,7 @@
 				</section>
 
 				<section>
-					<h2>Pros of Web Scraping</h2>
+					<h2>Web Scraping Advantages</h2>
 					<ul>
 						<li>Low barrier to entry compared to screen scraping</li>
 						<li>Common response content types provide some structure to the data</li>
@@ -144,16 +144,29 @@ nightmare.goto('http://localhost:8080/products')
 				</section>
 
 				<section>
-					<h2>Gotchas</h2>
-					<p>Set a user-agent on your client</p>
-					<p>Be nice to your target sites</p>
+					<h2>Controlling Nightmare</h2>
 					<ul>
+						<li>API includes verbs such as `goto`, `click`, `wait`, etc</li>
+						<li>Run your own JavaScript via `evaluate` or `inject`</li>
+						<li>`evaluate` can return data to your Node process</li>
+					</ul>
+				</section>
+
+				<section>
+					<img class="no-border" src="images/diagram.png">
+				</section>
+
+				<section>
+					<h2>Gotchas</h2>
+					<ul>
+						<li>Set a user-agent on your client</li>
+						<li>Be nice to your target sites</li>
 						<li>Schedule scraping for off hours</li>
 						<li>Throttle requests</li>
 						<li>Obey robots.txt</li>
 					</ul> 
 				</section>
-				
+
 				<section>
 					<h2><span class="highlight">Thanks!</span></h2>
 					<ul class="fa-ul">

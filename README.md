@@ -95,7 +95,34 @@ Notes for the presentation follows.
 * Minor gotcha - the DOM reflects the actual HTML and won't automatically insert elements such as tbody.
 
 ### Browser Automation
+* Great for dynamic content, logging in, navigation, etc
+    * Any example where you may need to have session state
+    * Some sites build a profile around if they think you're a "real" user (google)
+* Includes or drives a fully functional browser
+    * This means that we can now include more sophisticated logic into our scraping
+* Browser plugins (macros), Selenium, PhantomJS/Casper, Nightmare, and more
+    * This can be a huge pain in the butt to integrate WITH your application
 
 ### Nightmare
+* [Nightmare](http://www.nightmarejs.org/) is a high-level browser automation library
+* Based on the Electron project (which lets you run Chromium via Node)
+    * This means that you can include full browser automation with an `npm install` command
+
+### Driving Nightmare
+* Provides functions such as `goto`, `wait`, `screenshot`, `click`, `refresh`, etc that drive the browser
+* Inject your own .js file in order to run your own JavaScript in the context of the browser
+* The `evaluate` function takes JavaScript and will also evaluate it in the context of the page. It is used as a bridge BACK to your Node process.
+
+### High Level architecture
+* Probably overkill!
+* Designed to be fairly decomposed which means there is management overhead
+* Split up the process of gathering raw data and scraping the data you really want
+* Storage, transport, and what sections can be combined depend on the situation
 
 ### Gotchas
+* Set a user-agent on your client
+* Be nice to your target sites
+    * You can and will get cut off, especially from sites like Google
+* Schedule scraping for off hours
+* Throttle requests
+* Obey robots.txt
