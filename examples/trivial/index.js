@@ -1,6 +1,5 @@
 'use strict';
 
-//const buffer = require('buffer');
 const http = require('http');
 
 let options = {
