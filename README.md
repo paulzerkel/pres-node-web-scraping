@@ -9,9 +9,11 @@ Edit the root `index.html` file to change the presentation. All of the files for
 ## Examples
 All examples are in `/examples`. Run `npm install` in each directory to install the required dependencies.
 
-1. `TBD` - TBD description
+1. `trivial` - A simple example of finding keywords in HTTP responses with regex
+1. `dom` - Demonstrates the advantage of having a DOM
+1. `automate` - Full browser automation
 
-The examples target a site that was made for this presentation. The target site is also available TBD.
+The examples target a site that was made for this presentation. The target site is [also available](https://github.com/paulzerkel/scraping-targets). See the target site's repo for more information.
 
 ## Notes
 Notes for the presentation follows.
@@ -46,10 +48,10 @@ Notes for the presentation follows.
 * If a website doesn't have a publicly available API, scraping may be an answer.
 * Build applications that require 3rd party web data
     * Alerts - BYO Google Alerts, Price changes
+    * Display a page in another format - Pocket, Instapaper, etc
     * Data aggregation - Padmapper, crime stats
     * Financial data - Yodlee
-    * Niche search engine
-    * Display a page in another format - Pocket, Instapaper, etc
+    * Niche search engine - Scrape social media and blog posts and analyze it
 
 ### Pros of Web Scraping
 * In the best case scenarios web scraping is significantly more straightforward than traditional screen scraping.
@@ -78,16 +80,22 @@ Notes for the presentation follows.
 * Easy to implement and can be used for alerts or the foundation for more complicated processing.
 * It's also easy to outgrow this. You'll find yourself spending more and more time implementing logic around the request, response, and body processing. Still - start easy!
 * Consider helper libs such as [`got`](https://github.com/sindresorhus/got)
+    * Got extents the existing HTTP functionality and lets you use a more concise promise syntax.
 
 ### Build a DOM
 * Using a regex is fine if you know exactly what you're looking for.
 * What if you don't know the value of what you're looking for? Do you want to try to parse HTML etc with a regex? Probably not!
 * [`cheerio`](https://github.com/cheeriojs/cheerio) provides a DOM, selectors, and jQuery style API for manipulating the dom.
+
+### More on Cheerio
+* JSDOM replacement
+* jQuery style API
+* `.load(body)`, `find('selector')`, `forEach(index, element) =>`, etc 
 * Test in browser with jQuery or just test your selector with `document.querySelectorAll`
 * Minor gotcha - the DOM reflects the actual HTML and won't automatically insert elements such as tbody.
 
-### Querying the DOM
-* jQuery style API
-* find, forEach
+### Browser Automation
 
-### Full Browser Automation
+### Nightmare
+
+### Gotchas

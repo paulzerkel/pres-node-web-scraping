@@ -1,5 +1,6 @@
 <html>
 	<head>
+		<title>Web Scraping in Node.js</title>
 		<link rel="stylesheet" href="reveal/css/reveal.css">
 		<link rel="stylesheet" href="reveal/css/theme/solarized.css">
 		<link rel="stylesheet" href="reveal/lib/css/zenburn.css">
@@ -38,7 +39,7 @@
 				</section>
 
 				<section>
-					<h2>Web Scraping</h2>
+					<h2><span class="hightlight">Web Scraping<span> Involves:</h2>
 					<ul>
 						<li>Receive data from web server responses</li>
 						<li>Process the data in some fashion to make sense of it</li>
@@ -49,11 +50,11 @@
 				<section>
 					<h2>Common Examples</h2>
 					<ul>
-						<li>Alerts</li>
-						<li>Data Aggregation</li>
-						<li>Financial Data</li>
-						<li>Populating a niche search engine</li>
+						<li>Alerts for web content</li>
 						<li>Reformat content for users</li>
+						<li>Aggregate data and store information</li>
+						<li>Access financial data on behalf of users</li>
+						<li>Populating a niche search engine</li>
 					</ul>
 				</section>
 
@@ -62,7 +63,7 @@
 					<ul>
 						<li>Low barrier to entry compared to screen scraping</li>
 						<li>Common response content types provide some structure to the data</li>
-						<li>Developers can get started with common tools</li>
+						<li>Developers can start with common tools</li>
 					</ul>
 				</section>
 
@@ -77,28 +78,80 @@
 				</section>
 
 				<section>
-					<h2>GET + RegEx</h2>
+					<h2>Example: GET + RegEx</h2>
 					<ul>
 						<li>Easy way to check for presence of text.</li>
 						<li>Just the standard libraries</li>
 						<li>Probably easy to outgrow</li>
 						<li>Consider using a library to make the requests easier such as <a href="https://github.com/sindresorhus/got">got</a></li>
 					</ul>
+					<pre><code class="javascript" data-trim>
+got('localhost:8080', {
+  headers: {
+    'User-Agent': 'nodejstl-bot',
+  }})
+  .then(response => { ... });
+  </code></pre>
 				</section>
 
 				<section>
-					<h2>Build a DOM</h2>
+					<h2>Example: Build a DOM With Cheerio</h2>
 					<ul>
 						<li>Libraries exist to build a static DOM from the response body</li>
 						<li><a href="https://github.com/cheeriojs/cheerio">Cheerio</a> creates a DOM, selectors, <strong>and</strong> a jQuery stlye API</li>
 					</ul>
+					<pre><code class="javascript" data-trim>
+// assuming you have a valid response
+let $ = cheerio.load(response.body);
+let address = $('address');
+</code></pre>
 				</section>
 
 				<section>
-					<h2>Query the DOM</h2>
+					<h2>More on Cheerio</h2>
 					<ul>
-
+						<li>Built as a lightweight and fast JSDOM replacement</li>
+						<li>Aims for API compatibility with jQuery</li>
+						<li>Can manipulate the DOM and render back to HTML</li>
 					</ul>
+					<pre><code class="javascript" data-trim>
+let streetAddress = $('[itemprop="name"]');
+$('.team tbody tr').each((index, element) => { ... });
+</code></pre>
+				</section>
+
+				<section>
+					<h2>Browser Automation</h2>
+					<ul>
+						<li>Great for dynamic content, logging in, navigation, etc</li>
+						<li>Includes or drives a fully functional browser</li>
+						<li>Browser plugins (macros), Selenium, PhantomJS/Casper, Nightmare, and more</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Nightmare</h2>
+					<ul>
+						<li>Browser automation <span class="highlight">library</span></li>
+						<li>Based on Electron</li>
+						<li>API to interact and extract data from the page</li>
+						<li>Pass data between Node and the browser</li>
+					</ul>
+					<pre><code class="javascript" data-trim>
+const nightmare = require('nightmare')();
+nightmare.goto('http://localhost:8080/products')
+</code></pre>
+				</section>
+
+				<section>
+					<h2>Gotchas</h2>
+					<p>Set a user-agent on your client</p>
+					<p>Be nice to your target sites</p>
+					<ul>
+						<li>Schedule scraping for off hours</li>
+						<li>Throttle requests</li>
+						<li>Obey robots.txt</li>
+					</ul> 
 				</section>
 				
 				<section>
