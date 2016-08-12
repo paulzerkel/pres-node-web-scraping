@@ -66,6 +66,10 @@ Notes for the presentation follows.
 ### Potential Issues
 * Still not foolproof and it comes with its own set of challenges
     * If you have the option to just use an API - DO IT
+* Performance isn't going to be great
+    * Extra layers of complexity
+    * More logic required
+    * More likely to be throttled
 * UI changes can render existing web scraping scripts useless.
     * Ideally, UI changes would be done via CSS only and the HTML structure wouldn't change, but that rarely happens.
     * [Structured schemas](https://schema.org/) exist but adoption is infrequent and inconsistent.
