@@ -38,6 +38,10 @@ Notes for the presentation follows.
     * Investigative journalists use this technology to extract data from disclosure reports in order to make interactive datasets.
     * Financial documents, such as reports, can contain data that is more valuable if it can be stored and manipulated independent from the document.
 
+### Not Covering
+* Web crawling - outside the scope of pure scraping and requires way more infrastructure
+* Text analysis - NLP, mining, etc, is not always the domain you want to use JavaScript for
+
 ### Web Scraping
 * Process the responses from HTTP requests for the purposes of processing the data in some way instead of just displaying to users.
 * Possibly involves handling the responses in a fashion similar to a browser (or, exactly like a browser)
