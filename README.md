@@ -4,7 +4,7 @@ A presentation about web scraping techniques using Node.js for the [Node.jSTL](h
 ## Overview
 The presentation is built with [Reveal.js](https://github.com/hakimel/reveal.js) and is hosted on GitHub Pages: http://paulzerkel.github.io/pres-node-web-scraping/
 
-Edit the root `index.html` file to change the presentation. All of the files for Reveal.js are in `/reveal`. The gh-pages branch contains the live site.
+Edit the root `index.html` file to change the presentation. All of the files for Reveal.js are in `/reveal`. The master branch contains the live site.
 
 ## Examples
 All examples are in `/examples`. Run `npm install` in each directory to install the required dependencies.
